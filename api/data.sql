@@ -1,0 +1,13 @@
+CREATE TABLE todos(
+	id VARCHAR(255) PRIMARY KEY,
+	user_email VARCHAR(255),
+	title VARCHAR(255),
+	progress INT,
+	date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+);
+
+CREATE TABLE users(
+    email VARCHAR(255) PRIMARY KEY,
+    hashed_password VARCHAR(255),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+)
