@@ -9,7 +9,18 @@ dotenv.config();
 const app=express();
 const PORT= process.env.PORT || 5000 ;
 app.use(cors());
-app.use(express.json())
+app.use(express.json());
+
+const testConnection = async () => {
+    try {
+      await pool.query('SELECT NOW()');
+      console.log('Connection to DB successful');
+    } catch (error) {
+      console.error('Failed to connect to the database', error);
+    }
+  };
+  testConnection();
+
 app.get("/api/todos/:userEmail",async (req,res)=>{
     const {userEmail}=req.params;
     try {
@@ -49,7 +60,8 @@ app.put("/api/todos/:id",async (req,res)=>{
 
 //deleted 
 app.delete("/api/todos/:id",async (req,res)=>{
-    console.log(id);
+    const {id}=req.params;
+    //console.log(id);
     try {
         const deletedTodo=await pool.query('DELETE FROM todos WHERE id=$1;',[id]);
         res.json(deletedTodo);
@@ -65,7 +77,7 @@ app.post("/api/register",async (req,res)=>{
     const salt = await bcrypt.genSalt(saltRounds);
     const hashedPassword = await bcrypt.hash(password, salt);
     try {
-        console.log("register hit");
+        //console.log("register hit");
         const Reg=await pool.query(`INSERT INTO users(email,hashed_password) VALUES ($1,$2)`,[email,hashedPassword]);
         const accessToken=jwt.sign({email},process.env.JWT_SECRET_TOKEN,{expiresIn:"1d"});
         res.json({email,accessToken})

@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import CheckCircleOutlineOutlinedIcon from '@mui/icons-material/CheckCircleOutlineOutlined';
 import Modal from './Modal';
+import ProgressBar from './ProgressBar';
 
 const Container = styled.div`
   width: 100%;
@@ -52,6 +53,11 @@ const DeleteButton = styled.button`
         color: white;
     }
 `
+const StyledCheckCircleIcon = styled(CheckCircleOutlineOutlinedIcon)`
+  &:hover {
+    color: green;
+  }
+`;
 
 const base_URl="http://localhost:5000/";
 const ListItem = ({task,getData}) => {
@@ -72,8 +78,9 @@ const ListItem = ({task,getData}) => {
     return (
         <Container>
             <InfoContainer >
-                <CheckCircleOutlineOutlinedIcon />
+                <StyledCheckCircleIcon   />
                 <Info>{task.title}</Info>
+                <ProgressBar progress={task.progress}/>
             </InfoContainer>
             <ButtonContainer>
                 <EditButton onClick={()=>{setShowModal(true)}}>Edit</EditButton>

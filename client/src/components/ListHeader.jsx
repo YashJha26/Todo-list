@@ -23,6 +23,10 @@ const Button = styled.button`
   font-size: 10px;
   border-radius: 12px;
   background-color: transparent;
+  &:hover{
+    background-color: black;
+    color: white;
+  }
 `
 const ListHeader = ({listName,getData}) => {
   const [showModal,setShowModal]=useState(false);

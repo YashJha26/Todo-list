@@ -57,6 +57,16 @@ const Input = styled.input`
 const Label = styled.label`
     font-size: 13px;
 `
+const Submit = styled.input`
+    margin: 11px 0px;
+    padding:11px 15px;
+    border-radius: 10px;
+    border:1.5px solid rgb(208, 202, 202);
+    &:hover{
+        background-color: black;
+        color: white;
+    }
+`
 const base_URl="http://localhost:5000/";
 const Modal = ({mode,setShowModal,task,getData}) => {
     const [cookies,setCookies,removeCookies]= useCookies(null);
@@ -138,7 +148,7 @@ const Modal = ({mode,setShowModal,task,getData}) => {
                     value={data.progress}
                     onChange={handleChange}
                     />
-                <Input type='submit' onClick={isEditMode?editData:postData}/>
+                <Submit type='submit' onClick={isEditMode?editData:postData}/>
             </Form>
         </ModalContainer>
     </Container>
