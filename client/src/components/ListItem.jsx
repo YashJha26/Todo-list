@@ -59,7 +59,7 @@ const StyledCheckCircleIcon = styled(CheckCircleOutlineOutlinedIcon)`
   }
 `;
 
-const base_URl="http://localhost:5000/";
+const base_URl="https://todo-list-backend-3pak.onrender.com/";
 const ListItem = ({task,getData}) => {
     const [showModal,setShowModal]=useState(false);
     const deleteItem = async ()=>{

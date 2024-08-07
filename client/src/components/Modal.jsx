@@ -67,7 +67,7 @@ const Submit = styled.input`
         color: white;
     }
 `
-const base_URl="http://localhost:5000/";
+const base_URl="https://todo-list-backend-3pak.onrender.com/";
 const Modal = ({mode,setShowModal,task,getData}) => {
     const [cookies,setCookies,removeCookies]= useCookies(null);
     const isEditMode = (mode === 'edit') ? true:false;
